@@ -12,10 +12,8 @@ setup(
     long_description=long_description,
     version="0.0.1",
     author="Hitul Mistry", 
-    maintainer="",
-    maintainer_email="",
-    url="",
-    licence="",
+    author_email="hitul.mistry@coverfoxmail.com",
+    licence="BSD",
     install_requires=[
         "Django>=1.7", "boto"
     ],
@@ -23,8 +21,7 @@ setup(
     zip_safe=True,
     keywords=['Django', 's3field', 'coverfox', 'cf_s3_field'],
     classifiers=[
-     'Development Status :: stable',
-
+        'Development Status :: 5 - Production/Stable'
         'Intended Audience :: Developers',
 
         'Natural Language :: English',
