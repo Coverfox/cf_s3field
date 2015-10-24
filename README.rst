@@ -1,4 +1,4 @@
-Django has ImageField and FileField which can be used for file and image operations. Django fields has problem that they store image and files on disk. They also don't delete older files when new files are uploaded. To solve this issue new field developed. 
+Django has ImageField and FileField which can be used for file and image operations. Django fields has problem that they store image and files on disk. They also don't delete older files when new files are uploaded. To solve this issue new field developed.  
 
 cf_s3field.S3ImageField
 -----------------------

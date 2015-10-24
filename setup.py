@@ -2,7 +2,7 @@ import os
 from setuptools import setup 
 
 try:
-    long_description = open("README.md")
+    long_description = open("README.rst")
 except:
     long_description = ""
 
