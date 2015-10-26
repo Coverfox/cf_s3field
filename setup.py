@@ -2,7 +2,8 @@ import os
 from setuptools import setup 
 
 try:
-    long_description = open("README.md").read()
+    long_description = open("README.rst").read()
+    long_description += open('ChangeLog.rst', 'rt').read()
 except:
     long_description = ""
 
@@ -10,11 +11,12 @@ setup(
     name="cf_s3field",
     description="S3 fields to upload images to s3 instead of file system",
     long_description=long_description,
-    version="0.0.1",
+    version="0.0.2",
     author="Hitul Mistry", 
-    author_email="hitul.mistry@coverfoxmail.com",
-    licence="BSD",
-    url="https://github.com/Coverfox/cf_s3field/",
+    maintainer="",
+    maintainer_email="",
+    url="",
+    licence="",
     install_requires=[
         "Django>=1.7", "boto"
     ],
@@ -22,6 +24,8 @@ setup(
     zip_safe=True,
     keywords=['Django', 's3field', 'coverfox', 'cf_s3_field'],
     classifiers=[
+     'Development Status :: stable',
+
         'Intended Audience :: Developers',
 
         'Natural Language :: English',

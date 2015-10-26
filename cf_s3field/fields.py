@@ -125,7 +125,6 @@ class S3ImageField(ImageField):
         key=None,
         **kwargs
     ):
-        import pdb; pdb.set_trace()
         migrate = kwargs.get("migrate", True)
             
         if not migrate:
