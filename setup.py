@@ -24,8 +24,6 @@ setup(
     zip_safe=True,
     keywords=['Django', 's3field', 'coverfox', 'cf_s3_field'],
     classifiers=[
-     'Development Status :: stable',
-
         'Intended Audience :: Developers',
 
         'Natural Language :: English',
