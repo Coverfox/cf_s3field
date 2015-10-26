@@ -3,6 +3,7 @@ from setuptools import setup
 
 try:
     long_description = open("README.rst").read()
+    long_description += open('ChangeLog.rst', 'rt').read()
 except:
     long_description = ""
 
@@ -10,7 +11,7 @@ setup(
     name="cf_s3field",
     description="S3 fields to upload images to s3 instead of file system",
     long_description=long_description,
-    version="0.0.1",
+    version="0.0.2",
     author="Hitul Mistry", 
     maintainer="",
     maintainer_email="",
