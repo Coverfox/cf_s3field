@@ -88,22 +88,24 @@ class FieldFile(File):
     # associated model instance.
 
     def save(self, name, content, save=True):
-        # Get file extension 
+        # Get file extension
         if "." in self.name:
             file_extension = self.name.split(".")[-1]
-        
+        else:
+            file_extension = ''
+
         # Generate filename.
-        key = self.field.key + str(random.random()).replace("0.", "") 
+        key = self.field.key + str(random.random()).replace("0.", "")
         key = key.format(**self.instance.__dict__)
         filename = "%s.%s" % (key, file_extension)
         self.name = filename
         content.name = filename
-        
-        # Delete old pic. 
+
+        # Delete old pic.
         old_instances = type(self.instance).objects.filter(id=self.instance.id)
         if old_instances:
-            old_instances[0].profile_pic.delete()
-        
+            getattr(old_instances[0], self.field.name).delete()
+
         args, varargs, varkw, defaults = getargspec(self.storage.save)
         if 'max_length' in args:
             self.name = self.storage.save(name, content, max_length=self.field.max_length)
@@ -234,7 +236,7 @@ class FileDescriptor(object):
             file.instance = instance
             file.field = self.field
             file.storage = self.field.storage
-        
+
         # That was fun, wasn't it?
         return instance.__dict__[self.field.name]
 
@@ -254,11 +256,11 @@ class FileField(Field):
     description = _("File")
 
     def __init__(
-        self, 
-        verbose_name=None, 
-        name=None, 
-        upload_to='', 
-        storage=None, 
+        self,
+        verbose_name=None,
+        name=None,
+        upload_to='',
+        storage=None,
         key=None,
         **kwargs
     ):
@@ -269,7 +271,7 @@ class FileField(Field):
         self.upload_to = upload_to
         if callable(upload_to):
             self.generate_filename = upload_to
-        
+
         self.key = key
         kwargs['max_length'] = kwargs.get('max_length', 100)
         super(FileField, self).__init__(verbose_name, name, **kwargs)
@@ -332,7 +334,7 @@ class FileField(Field):
         return six.text_type(value)
 
     def pre_save(self, model_instance, add):
-        "Returns field's value just before saving."        
+        "Returns field's value just before saving."
         file = super(FileField, self).pre_save(model_instance, add)
         if file and not file._committed:
             # Commit the file to storage prior to saving the model
@@ -504,7 +506,7 @@ class ImageField(FileField):
             # No file, so clear dimensions fields.
             width = None
             height = None
-        
+
         # Update the width and height fields.
         if self.width_field:
             setattr(instance, self.width_field, width)

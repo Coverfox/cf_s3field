@@ -14,7 +14,7 @@ user = User.objects.get(id=1)
 user.first_name = "Hitul"
 user.save()
 ```
-In above example key ``first_name`` will be replaced by ``Hitul``. When doing migration at that time migrate value should be true and when running it in django project it should be False. ImageField will also accept default django ImageField parameters. key is file name format. In s3 you will store multiple files. To seperate all images from each other key is introduced. Key values will be repalced by values specified in as extra attributes.
+In above example key ``first_name`` will be replaced by ``Hitul``. ImageField will also accept default django ImageField parameters. key is file name format. In s3 you will store multiple files. To seperate all images from each other key is introduced. Key values will be repalced by values specified in as extra attributes.
 
 cf_s3field.S3FileField
 -----------------------

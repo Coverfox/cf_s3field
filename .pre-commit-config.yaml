@@ -1,0 +1,13 @@
+-   repo: git://github.com/Coverfox/pre-commit-hooks
+    sha: 3d413defdaca9263efc42c5eebe5c970864efd8d
+    hooks:
+    -   id: trailing-whitespace
+    -   id: check-merge-conflict
+    -   id: check-json
+    -   id: pretty-format-json
+    -   id: debug-statements
+    -   id: check-added-large-files
+        args: [--maxkb=500]
+    -   id: flake8
+        args: [--max-line-length=131]
+        exclude: migrations/*
