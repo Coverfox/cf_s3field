@@ -1,3 +1,5 @@
 *.pyc
 cf_s3field.egg-info
 dist/
+.tox
+build

@@ -1,3 +1,7 @@
+0.0.4 - Fri Oct 30
+------------------
+- Django 1.7 support
+
 0.0.3 - Wed Oct 28
 ------------------
 - No need to specifify migrate as argument

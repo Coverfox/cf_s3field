@@ -10,7 +10,7 @@ setup(
     name="cf_s3field",
     description="S3 fields to upload images to s3 instead of file system",
     long_description=long_description,
-    version="0.0.3",
+    version="0.0.4",
     author="Hitul Mistry", 
     maintainer="",
     maintainer_email="",
