@@ -12,7 +12,6 @@ from django.core.files.storage import default_storage
 from django.db.models import signals
 from django.db.models.fields import Field
 from django.utils import six
-from django.utils.deprecation import RemovedInDjango110Warning
 from django.utils.encoding import force_str, force_text
 from django.utils.translation import ugettext_lazy as _
 
@@ -110,12 +109,17 @@ class FieldFile(File):
         if 'max_length' in args:
             self.name = self.storage.save(name, content, max_length=self.field.max_length)
         else:
-            warnings.warn(
-                'Backwards compatibility for storage backends without '
-                'support for the `max_length` argument in '
-                'Storage.save() will be removed in Django 1.10.',
-                RemovedInDjango110Warning, stacklevel=2
-            )
+            try:
+                from django.utils.deprecation import RemovedInDjango110Warning
+                warnings.warn(
+                    'Backwards compatibility for storage backends without '
+                    'support for the `max_length` argument in '
+                    'Storage.save() will be removed in Django 1.10.',
+                    RemovedInDjango110Warning, stacklevel=2
+                )
+            except:
+                pass
+
             self.name = self.storage.save(name, content)
 
         setattr(self.instance, self.field.name, self.name)
